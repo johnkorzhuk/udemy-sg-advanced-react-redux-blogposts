@@ -3,7 +3,7 @@ import React from 'react'
 import Routes from './Routes'
 
 const App = () => (
-  <div>
+  <div className='container'>
     Hello
     <Routes />
   </div>

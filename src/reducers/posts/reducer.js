@@ -1,22 +1,13 @@
-import { FETCH_POSTS } from './action'
-import type { Action } from './action'
+import { FETCH_POSTS } from './actions'
 
-type State = {
-  +all: Array<any>,
-  +posts: ?string,
-}
+export const INITIAL_STATE = {}
 
-const INITIAL_STATE = {
-  all: [],
-  posts: null
-}
-
-export default function (state: State = INITIAL_STATE, action: Action) {
+export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
     case FETCH_POSTS:
       return {
         ...state,
-        all: action.payload.data
+        ...action.payload
       }
 
     default:
