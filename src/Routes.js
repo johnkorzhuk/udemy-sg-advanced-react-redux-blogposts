@@ -6,8 +6,8 @@ import { Home, NewPost } from './containers/index'
 
 const Routes = () => (
   <Switch>
-    <Route path='/' exact component={Home} />
     <Route path='/posts/new' exact component={NewPost} />
+    <Route path='/' exact component={Home} />
   </Switch>
 )
 
