@@ -3,7 +3,7 @@ import axios from 'axios'
 export const API_KEY = '?key=johnkorz11'
 
 export const api = axios.create({
-  baseURL: 'http://reduxblog.herokuapp.com/api'
+  baseURL: 'https://reduxblog.herokuapp.com/api'
 })
 
 class PostsService {
