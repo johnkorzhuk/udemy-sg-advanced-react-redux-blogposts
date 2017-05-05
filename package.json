@@ -2,8 +2,15 @@
   "name": "blog-posts",
   "version": "0.1.0",
   "private": true,
+  "keywords": [
+    "jest",
+    "react",
+    "redux"
+  ],
   "dependencies": {
     "axios": "^0.16.1",
+    "create-inferno-app": "^3.0.1",
+    "global": "^4.3.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",

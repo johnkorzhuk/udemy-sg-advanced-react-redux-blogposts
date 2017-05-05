@@ -1,11 +1,16 @@
 import React, { PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+
+import { createPost } from './../../reducers/posts/actions'
 
 import './NewPost.css'
 
 class NewPost extends PureComponent {
-  _handleSubmit = values => {
-    console.log(values)
+  _handleSubmit = async values => {
+    await this.props.createPost(values)
+    this.props.history.push('/')
   }
 
   renderField ({ input, meta: { form, error, touched }, label }) {
@@ -42,6 +47,7 @@ class NewPost extends PureComponent {
         />
         <Field label='Content' name='content' component={this.renderField} />
         <button className='btn btn-primary' type='submit'>Submit</button>
+        <Link className='btn btn-danger' to='/'>Cancel</Link>
       </form>
     )
   }
@@ -59,4 +65,4 @@ export const validate = values => {
 export default reduxForm({
   validate,
   form: 'NewPostForm'
-})(NewPost)
+})(connect(null, { createPost })(NewPost))

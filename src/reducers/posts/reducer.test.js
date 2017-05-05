@@ -7,7 +7,7 @@ describe('posts reducer', () => {
   })
 
   it(`it should handle ${actions.FETCH_POSTS}`, () => {
-    const fetchPostActionResult1 = {
+    const fetchPostsActionResult1 = {
       type: actions.FETCH_POSTS,
       payload: {
         1: {
@@ -16,7 +16,7 @@ describe('posts reducer', () => {
         }
       }
     }
-    const fetchPostActionResult2 = {
+    const fetchPostsActionResult2 = {
       type: actions.FETCH_POSTS,
       payload: {
         2: {
@@ -26,15 +26,56 @@ describe('posts reducer', () => {
       }
     }
 
-    expect(reducer(undefined, fetchPostActionResult1)).toEqual(
-      fetchPostActionResult1.payload
+    expect(reducer(undefined, fetchPostsActionResult1)).toEqual(
+      fetchPostsActionResult1.payload
     )
 
     expect(
-      reducer(fetchPostActionResult1.payload, fetchPostActionResult2)
+      reducer(fetchPostsActionResult1.payload, fetchPostsActionResult2)
     ).toEqual({
-      ...fetchPostActionResult1.payload,
-      ...fetchPostActionResult2.payload
+      ...fetchPostsActionResult1.payload,
+      ...fetchPostsActionResult2.payload
+    })
+  })
+
+  it(`it should handle ${actions.FETCH_POST}`, () => {
+    const fetchPostActionResult = {
+      type: actions.FETCH_POST,
+      payload: {
+        1: {
+          id: 1,
+          test: '_1'
+        }
+      }
+    }
+
+    expect(reducer(undefined, fetchPostActionResult)).toEqual({
+      ...fetchPostActionResult.payload
+    })
+  })
+
+  it(`it should handle ${actions.DELETE_POST}`, () => {
+    const id = 2
+    const initState = {
+      1: {
+        id: 1,
+        test: '_1'
+      },
+      [id]: {
+        id,
+        test: '_2'
+      }
+    }
+    const expectedState = {
+      1: {
+        id: 1,
+        test: '_1'
+      }
+    }
+    const action = { type: actions.DELETE_POST, payload: id }
+
+    expect(reducer(initState, action)).toEqual({
+      ...expectedState
     })
   })
 })

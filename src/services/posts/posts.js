@@ -1,19 +1,47 @@
 import axios from 'axios'
 
-import { mapKey } from './utils'
-
-export const API_KEY = '?key=johnkorz1'
+export const API_KEY = '?key=johnkorz11'
 
 export const api = axios.create({
   baseURL: 'http://reduxblog.herokuapp.com/api'
 })
 
 class PostsService {
-  async invokePostsApi ({ path, method, body }) {
+  async get ({ path }) {
     try {
-      const { data } = await api[method](`${path}${API_KEY}`)
+      const { data } = await api({
+        method: 'get',
+        url: `${path}${API_KEY}`
+      })
 
-      return mapKey(data, 'id')
+      return data
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  async post ({ path, body }) {
+    try {
+      const { data } = await api({
+        method: 'post',
+        url: `${path}${API_KEY}`,
+        data: body
+      })
+
+      return data
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  async delete ({ path }) {
+    try {
+      const { data } = await api({
+        method: 'delete',
+        url: `${path}${API_KEY}`
+      })
+
+      return data
     } catch (e) {
       console.error(e)
     }

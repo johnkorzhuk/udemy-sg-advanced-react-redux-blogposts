@@ -12,7 +12,9 @@ class Home extends Component {
   renderPosts () {
     return Object.keys(this.props.posts).map(postKey => (
       <li className='list-group-item' key={postKey}>
-        {this.props.posts[postKey].title}
+        <Link to={`posts/${postKey}`}>
+          {this.props.posts[postKey].title}
+        </Link>
       </li>
     ))
   }

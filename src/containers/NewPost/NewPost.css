@@ -1,3 +1,7 @@
 .NewPost {
   text-transform: capitalize;
 }
+
+form a {
+  margin-left: 15px;
+}
